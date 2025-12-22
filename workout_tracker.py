@@ -1,32 +1,36 @@
 # User Input: exercise
-workout_name = input("What workout are we doing today: ")
+workout_name = input("What do you want to name your workout today: ")
 if not workout_name:
     print("Workout name is required")
     exit()
-exercise = input("What exercise: ")
-    
+exercise_name = input("What is your first exercise: ")
+if not exercise_name:
+    print("Exercise name is required")
+    exit()
+
 # User Input: Weight and Reps
-set1_weight = int(input("How much weight for the first set (lbs) are we lifting? "))
-if set1_weight <=0:
-    print("Weight cannot be empty")
-    exit()
-set1_reps = int(input(f"How many reps are we doing with {set1_weight} lbs? "))
-set2_weight = int(input("How much weight for the second set (lbs) are we lifting? "))
-if set2_weight <=0:
-    print("Weight cannot be empty")
-    exit()
-set2_reps = int(input(f"How many reps are we doing with {set2_weight} lbs? "))
+set_count =  int(input("How many sets are you doing today "))
+count = 1
+weights = []
+reps = []
+while count <= set_count:
+    try:
+        input_weight = int(input(f"Set {count} weight in lbs: "))
+        input_rep = int(input(f"Set {count} reps:"))
+        if input_weight <= 0 or input_rep <=0:
+            print("Weights must be positive value")
+            continue
+        weights.append(input_weight)
+        reps.append(input_rep)
+        count += 1
+    except ValueError:
+        print("Please enter a valid number")
 
-## Calculate
-set1_volume = (set1_weight * set1_reps)
-set2_volume = (set2_weight * set2_reps)
-total_volume = set1_volume + set2_volume
+# Print lists  
+for i, (w,r) in enumerate(zip(weights, reps)):
+    print(f"Set {i+1}: with {w} lbs for {r} reps")
+    print(f"Volume for set {i+1} is {w * r}")
 
-## Display
-print("---Workout Entry---")
-print(f"Workout: {workout_name.title()}")
-print(f"Exercise: {exercise.title()}")
-print(f"-----")
-print(f"Set 1 total volume {set1_volume}")
-print(f"Set 2 total volume {set2_volume}")
-print(f"Total volume of weight lifted was: {total_volume} lbs")
+# Total Volume
+total_volume = (sum(w * r for w, r in zip(weights, reps)))
+print(f"Total Volume of your workout is: {total_volume}")
