@@ -1,16 +1,19 @@
-# Create a dictionary for one workout set with keys: exercise, weight, reps
-# Print each value using key access
-# Add a new key volume with the calculated value
-# Loop through and print all key-value pairs
+# create an initial dictionary
+workout_set = {
+    "exercise": "Squats", 
+    "weight": 135, 
+    "reps": 10
+}
 
-workout_set = {"exercise": "Squats", "weight": 135, "reps": 10}
-
+# print a key from dictionary
 print(f"{workout_set['exercise']}")
 print(f"{workout_set['weight']}")
 print(f"{workout_set['reps']}")
 
+# perform an action on the dictionary and print the added KVP
 workout_set["volume"] = (workout_set["weight"] * workout_set["reps"])
 print(f"{workout_set["volume"]}")
 
+# print all KVP
 for key, value in workout_set.items():
     print(f"{key}: {value}")
