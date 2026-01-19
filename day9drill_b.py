@@ -22,3 +22,7 @@ for s in workout["exercises"]:
 for s in workout["exercises"]:
     for x in s["sets"]:  
         print(f"Weight: {x['weight']}, Reps {x['reps']}, Volume {x['volume']}")
+
+# add max volume form all available sets
+max_volume = max(x["volume"] for s in workout["exercises"] for x in s["sets"])
+print(f"Highest volume: {max_volume}")
