@@ -6,3 +6,6 @@
 
 # VS Code folder
 .vscode/
+
+# Private Data
+/data/
